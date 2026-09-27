@@ -1,0 +1,23 @@
+.superpowers/
+desktop.ini
+
+# Scratch/worktrees do Claude Code (não faz parte do site)
+.claude/worktrees/
+.claude/attention_history.jsonl
+.claude/attn_state.json
+.claude/context_injection.log
+
+# Podcast: material de pesquisa (audio + transcricoes) fora do git.
+# Sao derivados de conteudo com direitos e NUNCA devem ser publicados no site;
+# o produto usa so factos reescritos, sem referenciar a fonte.
+podcast/
+scripts/transcribe-podcast.py
+
+# Documentacao interna do projeto: fica SO no disco (Google Drive), nunca no
+# repositorio publico — contem nomes e contexto pessoal dos promotores, e o
+# repo publico e servido tal-e-qual pelo GitHub Pages. (Decisao 2026-09-27:
+# "não quero referências a nós".)
+CLAUDE.md
+handover.md
+docs/
+.claude/

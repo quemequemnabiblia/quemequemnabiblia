@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="pt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Quem é Quem na Bíblia</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600&display=swap">
+<!-- O ?v= força browsers com cache (GitHub Pages guarda 10 min) a irem buscar
+     a versão nova de CSS/JS em conjunto — sem isto, um telemóvel podia misturar
+     ficheiros de versões diferentes e a interface partia-se. Incrementar a cada
+     publicação que mude estes ficheiros. -->
+<link rel="stylesheet" href="style.css?v=22e">
+</head>
+<body>
+<div class="app">
+  <div class="topbar" id="topbar">
+    <div class="topbar-title">
+      <span class="eyebrow">Génesis ao Apocalipse</span>
+      <h1>Quem é Quem na Bíblia</h1>
+      <p class="hint">Arrasta ou usa as setas para percorrer o tempo. Clica num acontecimento para mergulhares nele — dentro, clica nos personagens e navega entre pais, filhos e cônjuges.</p>
+    </div>
+    <div class="search-wrap">
+      <input id="searchBox" class="search-box" type="text" placeholder="Procura uma personagem (ex: David, Rute, Jesus)..." autocomplete="off" aria-label="Procurar personagem">
+      <div id="searchResults" class="search-results" hidden></div>
+    </div>
+  </div>
+
+  <div class="stage">
+    <canvas id="bgStars"></canvas>
+    <div class="nebula n1"></div>
+    <div class="nebula n2"></div>
+    <div class="nebula n3"></div>
+
+    <div id="timelineView">
+      <div class="timeline-track">
+        <div id="timelineRail">
+          <svg id="railSvg"><path id="railPath" fill="none" stroke="url(#railGrad)" stroke-width="1.5"></path>
+            <defs>
+              <linearGradient id="railGrad" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0%" stop-color="#4a4580" stop-opacity="0"/>
+                <stop offset="8%" stop-color="#4a4580" stop-opacity=".9"/>
+                <stop offset="92%" stop-color="#4a4580" stop-opacity=".9"/>
+                <stop offset="100%" stop-color="#4a4580" stop-opacity="0"/>
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+      </div>
+    </div>
+
+    <div class="timeline-chrome">
+      <div class="progress-dots" id="progressDots"></div>
+      <div class="scroll-hint">
+        <span id="scrollHintText">arrasta a linha do tempo</span>
+        <div class="scroll-arrows">
+          <button id="scrollLeft" type="button" aria-label="Recuar no tempo">&larr;</button>
+          <button id="scrollRight" type="button" aria-label="Avançar no tempo">&rarr;</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="eventView">
+      <div class="event-ambient" id="eventAmbient"></div>
+      <!-- Barra de app (só mobile): voltar + segmento Árvore/Sobre. Em desktop
+           fica display:none e mantém-se o layout de duas colunas de sempre. -->
+      <div class="event-appbar" id="eventAppbar">
+        <button class="appbar-back" id="appbarBack" type="button" aria-label="Voltar à linha do tempo"><span class="bk-arrow">&larr;</span></button>
+        <div class="appbar-title" id="appbarTitle"></div>
+        <div class="appbar-seg" role="tablist">
+          <button class="seg-btn active" id="segArvore" type="button" role="tab" aria-selected="true">Árvore</button>
+          <button class="seg-btn" id="segSobre" type="button" role="tab" aria-selected="false">Sobre</button>
+        </div>
+      </div>
+      <div id="eventScroll">
+        <div class="event-body">
+          <aside class="event-info" id="eventInfo">
+            <button class="back-btn" id="backBtn" type="button" aria-label="Voltar à linha do tempo" title="Voltar à linha do tempo"><span class="bk-arrow">&larr;</span></button>
+            <span class="event-info-label">Sobre este acontecimento</span>
+            <p class="event-desc" id="eventDesc"></p>
+            <div class="event-info-grid">
+              <div class="event-info-block"><h3>Importância</h3><p id="eventImportancia"></p></div>
+              <div class="event-info-block"><h3>Mensagem principal</h3><p id="eventMensagem"></p></div>
+              <div class="event-info-block"><h3>Contexto histórico</h3><p id="eventContexto"></p></div>
+              <div class="event-info-block"><h3>Passagens-chave</h3><ul id="eventPassagens"></ul></div>
+            </div>
+          </aside>
+          <div class="event-main">
+            <div class="event-heading">
+              <div class="event-icon" id="eventIcon"></div>
+              <div class="event-title-wrap">
+                <span class="event-title" id="eventTitle"></span>
+                <span class="event-era-tag" id="eventEra"></span>
+              </div>
+            </div>
+            <div class="char-field" id="charField">
+              <div class="char-orbit" id="charOrbit">
+                <div id="camLayer">
+                  <svg class="char-lines" id="charLines"></svg>
+                  <div id="charButtons"></div>
+                </div>
+              </div>
+              <div class="zoom-controls">
+                <button id="zoomIn" type="button" aria-label="Ampliar">+</button>
+                <button id="zoomOut" type="button" aria-label="Reduzir">&minus;</button>
+                <button id="zoomReset" type="button" aria-label="Repor vista">&#8634;</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="sheet-backdrop" id="sheetBackdrop" aria-hidden="true"></div>
+      <aside id="panel">
+        <div class="sheet-handle" id="sheetHandle" aria-hidden="true"><span></span></div>
+        <button class="panel-close" id="panelClose" type="button">&times;</button>
+        <div id="panelBody">
+          <p class="panel-empty">Clica num personagem para veres a sua ficha completa.</p>
+        </div>
+      </aside>
+    </div>
+  </div>
+
+  <footer class="note">Quem é Quem na Bíblia</footer>
+</div>
+<script src="js/event-icons.js?v=22e"></script>
+<script src="js/warp-transition.js?v=22e"></script>
+<script src="js/timeline.js?v=22e"></script>
+<script src="js/event-graph.js?v=22e"></script>
+<script src="js/camera-math.js?v=22e"></script>
+<script src="app.js?v=22e"></script>
+</body>
+</html>
