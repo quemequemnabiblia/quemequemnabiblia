@@ -18,7 +18,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const BASE_URL = 'https://quemequemnabiblia.github.io/quemequemnabiblia';
+const BASE_URL = 'https://quemequemnabiblia.com';
 const ROOT = path.join(__dirname, '..');
 const data = JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'personagens.json'), 'utf8'));
 

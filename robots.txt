@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://quemequemnabiblia.github.io/quemequemnabiblia/sitemap.xml
+Sitemap: https://quemequemnabiblia.com/sitemap.xml
