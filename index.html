@@ -3,13 +3,33 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>Quem é Quem na Bíblia</title>
+<title>Quem é Quem na Bíblia — as personagens da Bíblia numa linha do tempo interativa</title>
+<meta name="description" content="Explora as personagens da Bíblia numa linha do tempo interativa — da Criação ao Apocalipse. Árvores de família, histórias, lições e contexto histórico, para a catequese.">
+<!-- Quando o domínio quemequemnabiblia.com estiver ligado: trocar o canonical,
+     o og:url e o og:image para o domínio, e o BASE_URL em scripts/gen-paginas.js
+     (regenerar as páginas). -->
+<link rel="canonical" href="https://quemequemnabiblia.github.io/quemequemnabiblia/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Quem é Quem na Bíblia">
+<meta property="og:title" content="Quem é Quem na Bíblia">
+<meta property="og:description" content="As personagens da Bíblia numa linha do tempo interativa — árvores de família, histórias e contexto, para a catequese.">
+<meta property="og:url" content="https://quemequemnabiblia.github.io/quemequemnabiblia/">
+<meta property="og:image" content="https://quemequemnabiblia.github.io/quemequemnabiblia/assets/og.png">
+<meta property="og:locale" content="pt_PT">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#0d1024">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"Quem é Quem na Bíblia","url":"https://quemequemnabiblia.github.io/quemequemnabiblia/","description":"As personagens da Bíblia numa linha do tempo interativa, para a catequese.","inLanguage":"pt-PT"}</script>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600&display=swap">
 <!-- O ?v= força browsers com cache (GitHub Pages guarda 10 min) a irem buscar
      a versão nova de CSS/JS em conjunto — sem isto, um telemóvel podia misturar
      ficheiros de versões diferentes e a interface partia-se. Incrementar a cada
      publicação que mude estes ficheiros. -->
-<link rel="stylesheet" href="style.css?v=22e">
+<link rel="stylesheet" href="style.css?v=22f">
 </head>
 <body>
 <div class="app">
@@ -119,13 +139,20 @@
     </div>
   </div>
 
-  <footer class="note">Quem é Quem na Bíblia</footer>
+  <footer class="note">Quem é Quem na Bíblia · <a href="personagens.html">Personagens</a> · <a href="acontecimentos.html">Acontecimentos</a> · <a href="privacidade.html">Privacidade</a></footer>
 </div>
-<script src="js/event-icons.js?v=22e"></script>
-<script src="js/warp-transition.js?v=22e"></script>
-<script src="js/timeline.js?v=22e"></script>
-<script src="js/event-graph.js?v=22e"></script>
-<script src="js/camera-math.js?v=22e"></script>
-<script src="app.js?v=22e"></script>
+<noscript>
+  <div style="max-width:44rem;margin:2rem auto;padding:0 20px;font-family:Georgia,serif;color:#e8e4d8">
+    <p>O mapa interativo precisa de JavaScript. Podes explorar o mesmo conteúdo nas páginas de
+    <a style="color:#d8c98a" href="personagens.html">personagens</a> e
+    <a style="color:#d8c98a" href="acontecimentos.html">acontecimentos</a>.</p>
+  </div>
+</noscript>
+<script src="js/event-icons.js?v=22f"></script>
+<script src="js/warp-transition.js?v=22f"></script>
+<script src="js/timeline.js?v=22f"></script>
+<script src="js/event-graph.js?v=22f"></script>
+<script src="js/camera-math.js?v=22f"></script>
+<script src="app.js?v=22f"></script>
 </body>
 </html>
